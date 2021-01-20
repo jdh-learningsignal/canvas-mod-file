@@ -13,7 +13,7 @@
     const links = [
         {
             title: "한사대로",
-            icon_svg: 'https://lmspub.hycu.ac.kr/images/svg-icons/svg_icon_hycu_hansadero.svg',
+            icon_svg: 'https://instructure.github.io/instructure-icons/svg/Line/android/home_lg.svg',
             href: 'https://road.hycu.ac.kr/?display=borderless',
             target: '_blank'
         }
@@ -46,6 +46,7 @@
         $course_toggle.val(location.href);
     });
 
+
     /** info & help 추가 **/
     // 매뉴얼
     $('.ic-app-nav-toggle-and-crumbs').append(
@@ -71,11 +72,9 @@
         dialogBox.toggleClass('dialog--active');
         e.stopPropagation();
     });
-
     dialogClose.on('click', function () {
         dialogBox.removeClass('dialog--active');
     });
-
     $(document).on("click", function (e) {
         if ($(e.target).is(dialogBox) === false &&
             $(e.target).is(dialogContent) === false &&
@@ -84,9 +83,9 @@
         }
     });
 
-    /** 과목 내비게이션(LTI)에 배지추가  */
+    /** 과목 내비게이션(LTI)에 배지추가  **/
     if (location.href.includes("courses")) {
-        $("#section-tabs > li > .discussions").append('<div style="width:18px;height:18px;border-radius:50%;background:#f18e2c;float:right; vertical-align:middle;"></div>')
-        $("#section-tabs > li > .quizzes").append('<div style="width:18px;height:18px;border-radius:50%;background:#f18e2c;float:right; vertical-align:middle;"></div>')
+        $("#section-tabs > li > .discussions").append('<b class="nav-badge">1</b>');
+        $("#section-tabs > li > .quizzes").append('<b class="nav-badge">3</b>');
     }
 })();

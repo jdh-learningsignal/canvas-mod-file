@@ -84,7 +84,7 @@
 
 /** 과목 내비게이션 리스트 정리 **/
 /* 숨김 */
-#section-tabs > li > .grades {
+/* #section-tabs > li > .grades {
   display: none;
 }
 #section-tabs > li > .syllabus {
@@ -101,10 +101,9 @@
 }
 #section-tabs > li > .home {
   display: none;
-}
+} */
 
 /* 색 정리 */
-
 #section-tabs > li > .announcements {
   color: #cc7733;
 }
