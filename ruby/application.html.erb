@@ -104,12 +104,32 @@
     <% if crumbs.length > 1 %>
       <div class="ic-app-nav-toggle-and-crumbs no-print">
         <% if @show_left_side %>
-          <button type="button" id="courseMenuToggle" class="Button Button--link ic-app-course-nav-toggle" aria-live="polite" aria-label="<%= subnav_menu_text %>">
+          <!-- 캔버스 직접 수정: 페이지 변환 토글 버튼 추가시작 -->
+          <button type="button" id="courseMenuToggle" class="Button Button--link ic-app-course-nav-toggle" aria-live="polite" aria-label="<%= subnav_menu_text %>" title="<%= subnav_menu_text %>">
             <i class="icon-hamburger" aria-hidden="true"></i>
           </button>
           <div class="ic-app-crumbs">
+            <select id="admin_toggle_top" class="page-toggle-top">
+              <option>한양사이버대학교</option>
+            </select>
+            <select id=="semester_toggle_top" class="page-toggle-top">
+              <option>2020년 1학기</option>
+            </select>
+            <select id="course_toggle_top" class="page-toggle-top" onchange="if(this.value) {location.href=(this.value);}">
+              <option><%= @context.name %></option>
+            </select>
         <% end %>
-        <%= render_crumbs %>
+        <!-- 캔버스 직접 수정: 페이지 변환 토글 버튼 추가끝 -->
+
+        <%#= render_crumbs %>
+
+        <!-- 캔버스 직접 수정: info & top 추가시작 -->
+        <div class="btn-wrap-top">
+          <a href="#" id="info_top" class="support-top"><img src="img/info.png" alt="">info</a>
+          <a href="#" id="help_top" class="support-top"><img src="img/help.png" alt="">help</a>
+        </div>
+        <!-- 캔버스 직접 수정: info & top 추가 끝 -->
+
         <% if @show_left_side %></div><% end %>
         <% if tutorials_enabled? %>
           <div class="TutorialToggleHolder"></div>
