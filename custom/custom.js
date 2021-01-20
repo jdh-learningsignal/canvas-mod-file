@@ -83,9 +83,14 @@
         }
     });
 
-    /** 과목 내비게이션(LTI)에 배지추가  **/
-    if (location.href.includes("courses")) {
+    /** 과목 내비게이션에 배지추가  **/
+    if (location.href.includes("courses")) { // 과목 페이지인 경우에만 배지 코드 동작
         $("#section-tabs > li > .discussions").append('<b class="nav-badge">1</b>');
         $("#section-tabs > li > .quizzes").append('<b class="nav-badge">3</b>');
+    }
+
+    /** 순정 캔버스의 과목 홈으로 들어왔을 경우 redirect **/
+    if (/^[0-9]*$/.exec(location.pathname.replace("/courses/", "").replace(/\//gi, ""))) {
+        location.pathname = location.pathname + "/external_tools/30";
     }
 })();
