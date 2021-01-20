@@ -1,0 +1,167 @@
+/** info & help **/
+.dialog__trigger,
+.dialog__action {
+  background: #ffffff;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  display: block;
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transform: translateX(0px);
+  transform: translateX(0px);
+}
+.dialog__trigger:hover,
+.dialog__action:hover {
+  -webkit-transform: translateX(-5px);
+  transform: translateX(-5px);
+  -webkit-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+}
+.dialog__trigger:focus,
+.dialog__action:focus {
+  outline: 0;
+}
+.dialog__trigger:active,
+.dialog__action:active {
+  -webkit-transform: translateX(-3px);
+  transform: translateX(-3px);
+}
+.dialog {
+  background: #ffffff;
+  width: 20%;
+  height: 50%;
+  position: absolute;
+  left: calc(100% - 35%);
+  top: 0;
+  padding: 30px;
+  visibility: hidden;
+  opacity: 1;
+  -webkit-transition: all 180ms ease-in;
+  transition: all 180ms ease-in;
+  float: right;
+  z-index: 1000;
+}
+@media (max-width: 600px) {
+  .dialog {
+    width: 90%;
+    left: calc(50% - 45%);
+  }
+}
+.dialog.dialog--active {
+  left: 60%;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: all 250ms ease-out;
+  transition: all 250ms ease-out;
+}
+.dialog .dialog__close {
+  font-size: 2rem;
+  line-height: 2rem;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  padding: 15px;
+  -webkit-transition: color 150ms ease;
+  transition: color 150ms ease;
+}
+.dialog .dialog__close:hover {
+  color: #e74c3c;
+}
+.dialog .dialog__title {
+  margin: 0;
+  padding: 0 0 15px 0;
+  border-bottom: 2px solid #ffffff;
+}
+.dialog .dialog__content {
+  font-size: 1.1rem;
+  line-height: 2rem;
+}
+.dialog .dialog__action {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/** 과목 내비게이션 리스트 정리 **/
+/* 숨김 */
+#section-tabs > li > .grades {
+  display: none;
+}
+#section-tabs > li > .syllabus {
+  display: none;
+}
+#section-tabs > li > .modules {
+  display: none;
+}
+#section-tabs > li > .people {
+  display: none;
+}
+#section-tabs > li > .pages {
+  display: none;
+}
+#section-tabs > li > .home {
+  display: none;
+}
+
+/* 색 정리 */
+
+#section-tabs > li > .announcements {
+  color: #cc7733;
+}
+#section-tabs > li > .context_external_tool_5 {
+  color: #cc7733;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0;
+}
+
+#section-tabs > li > .context_external_tool_3 {
+  color: #6677cc;
+}
+#section-tabs > li > .context_external_tool_7 {
+  color: #6677cc;
+}
+#section-tabs > li > .context_external_tool_9 {
+  color: #6677cc;
+}
+#section-tabs > li > .context_external_tool_11 {
+  color: #6677cc;
+}
+#section-tabs > li > .context_external_tool_13 {
+  color: #6677cc;
+}
+#section-tabs > li > .context_external_tool_15 {
+  color: #6677cc;
+}
+#section-tabs > li > .context_external_tool_17 {
+  color: #6677cc;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0;
+}
+
+#section-tabs > li > .context_external_tool_19 {
+  color: #dd77cc;
+}
+#section-tabs > li > .context_external_tool_25 {
+  color: #dd77cc;
+}
+#section-tabs > li > .context_external_tool_23 {
+  color: #dd77cc;
+}
+#section-tabs > li > .context_external_tool_27 {
+  color: #dd77cc;
+  border-radius: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+#section-tabs > li > .filesoutcomes {
+  color: #cc7733;
+}
+#section-tabs > li > .rubrics {
+  color: #cc7733;
+}
+#section-tabs > li > .context_external_tool_31 {
+  color: #cc7733;
+}
+#section-tabs > li > .settings {
+  color: #cc7733;
+}
