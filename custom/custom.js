@@ -88,9 +88,52 @@
         $("#section-tabs > li > .discussions").append('<b class="nav-badge">1</b>');
         $("#section-tabs > li > .quizzes").append('<b class="nav-badge">3</b>');
     }
+    // 과제 : 31, 퀴즈 : 32, 토론 :33
+    /** 순정 캔버스의 과목 홈, 퀴즈, 토론, 과제로 들어왔을 경우 LTI Tool로 redirect **/
+    const pathname = location.pathname; 
 
-    /** 순정 캔버스의 과목 홈으로 들어왔을 경우 redirect **/
-    if (/^[0-9]*$/.exec(location.pathname.replace("/courses/", "").replace(/\//gi, ""))) {
-        location.pathname = location.pathname + "/external_tools/30";
+    if (pathname.includes("courses")) {
+        // 과제일 경우 => 31
+        if (pathname.includes("assignments")) {
+            
+        }
+
+        // 퀴즈일 경우 => 32
+        if (pathname.includes("assignments")) {
+
+        }
+
+        // 토론일 경우 => 33
+        if (pathname.includes("discussion_topics")) {
+
+        }
+
+        // 홈일 경우 => 30
+        else if (/^[0-9]*$/.test(pathname.replace("/courses/", "").replace(/\//gi, ""))) {
+
+        }
+    }
+
+    // 홈일 경우 => 30
+    if (pathname.includes("courses") && /^[0-9]*$/.test(pathname.replace("/courses/", "").replace(/\//gi, ""))) {
+        // location.pathname = pathname + "/external_tools/30";
+    }
+    // 과제일 경우 => 31
+    if (pathname.includes("courses") && /^[0-9]*$/.test(pathname.replace("/courses/", "").replace(/\//gi, ""))) {
+        
+    }
+    // 퀴즈일 경우 => 32
+
+    // 토론일 경우 => 33
+
+
+    /** 내강의실 클릭 시 아이콘 선택 이미지로 변경 **/
+    if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kraccounts1external_tools42?launch_type=global_navigation") {
+        $("#context_external_tool_42_menu_item a img").attr("src", "https://lmspub.hycu.ac.kr/images/svg-icons/svg_icon_hycu_mylecture_a.png");
+    }
+
+    /** 대시보드로 이동 시 내강의실로 리다렉트 */
+    if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kr") {
+        location.href = "https://lmspub.hycu.ac.kr/accounts/1/external_tools/42?launch_type=global_navigation";
     }
 })();
