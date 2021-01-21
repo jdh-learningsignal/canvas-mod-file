@@ -2,7 +2,7 @@
 
 파일 목록
 - custom css/js (Canvas Theme)
-- /var/canvas/app/views/layouts/application.html.erb
-- /var/canvas/app/controllers/login/shared.rb
+- app/views/layouts/application.html.erb
+- app/controllers/login/shared.rb
 
 
