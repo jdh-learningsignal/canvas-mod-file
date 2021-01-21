@@ -118,19 +118,18 @@
             <select id="course_toggle_top" class="page-toggle-top" onchange="if(this.value) {location.href=(this.value);}">
               <option><%= @context.name %></option>
             </select>
+            <!-- 캔버스 직접 수정: 페이지 변환 토글 버튼 추가끝 -->
         <% end %>
-        <!-- 캔버스 직접 수정: 페이지 변환 토글 버튼 추가끝 -->
 
         <%#= render_crumbs %>
 
-        <!-- 캔버스 직접 수정: info & top 추가시작 -->
-        <div class="btn-wrap-top">
-          <a href="#" id="info_top" class="support-top"><img src="img/info.png" alt="">info</a>
-          <a href="#" id="help_top" class="support-top"><img src="img/help.png" alt="">help</a>
-        </div>
-        <!-- 캔버스 직접 수정: info & top 추가 끝 -->
-
         <% if @show_left_side %></div><% end %>
+          <!-- 캔버스 직접 수정: info & top 추가시작 -->
+          <div class="btn-wrap-top">
+            <a href="#" id="info_top" class="support-top"><i class="icon-question"></i>info</a>
+            <a href="#" id="help_top" class="support-top"><i class="icon-question"></i>help</a>
+          </div>
+          <!-- 캔버스 직접 수정: info & top 추가 끝 -->
         <% if tutorials_enabled? %>
           <div class="TutorialToggleHolder"></div>
         <% end %>
@@ -139,6 +138,7 @@
             <i class="icon-student-view"></i>
           <% end %>
         <% end %>
+
       </div>
     <% end %>
     <div id="main" class="ic-Layout-columns">
