@@ -98,8 +98,6 @@ Set courseHome = Nothing;
 })();
 */
 
-
-
 //////////////////////////////////////////////////////////////////////////
 /////////////////////////// 라이너스 추가 ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -108,7 +106,107 @@ if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kraccounts1exter
     $("#context_external_tool_42_menu_item a img").attr("src", "https://lmspub.hycu.ac.kr/images/svg-icons/svg_icon_hycu_mylecture_a.png");
 }
 
-/** 대시보드로 이동 시 내강의실로 리다렉트 **/
+/** 대시보드로 이동 시 내강의실로 리다이렉트 **/
 if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kr") {
     location.href = "https://lmspub.hycu.ac.kr/accounts/1/external_tools/42?launch_type=global_navigation";
 }
+
+/** info & help 추가 **/
+// info
+(function () {
+    $('.ic-app-nav-toggle-and-crumbs').append(
+        '<div class="dialog">' +
+        '<span class="dialog__close">&#x2715;</span>' +
+        '<img src="https://lmspub.hycu.ac.kr/images/temp/Info.png" width="300px">' +
+        '</div>');
+
+    const dialogBox = $('.dialog'),
+        infoTrigger = $('#info_top'),
+        dialogClose = $('.dialog__close'),
+        dialogContent = $('.dialog__content'),
+        dialogAction = $('.dialog__action');
+
+    infoTrigger.on('click', function (e) {
+        dialogBox.toggleClass('dialog--active');
+        e.stopPropagation();
+    });
+
+    dialogClose.on('click', function () {
+        dialogBox.removeClass('dialog--active');
+    });
+    $(document).on("click", function (e) {
+        if ($(e.target).is(dialogBox) === false &&
+            $(e.target).is(dialogContent) === false &&
+            $(e.target).is(dialogAction) === false) {
+            dialogBox.removeClass("dialog--active");
+        }
+    });
+})();
+
+// help
+(function () {
+    $('.ic-app-nav-toggle-and-crumbs').append(
+        '<div class="dialog">' +
+        '<span class="dialog__close">&#x2715;</span>' +
+        '<img src="https://lmspub.hycu.ac.kr/images/temp/Help.png" width="300px">' +
+        '</div>');
+
+    const dialogBox = $('.dialog'),
+        helpTrigger = $('#help_top'),
+        dialogClose = $('.dialog__close'),
+        dialogContent = $('.dialog__content'),
+        dialogAction = $('.dialog__action');
+
+        helpTrigger.on('click', function (e) {
+        dialogBox.toggleClass('dialog--active');
+        e.stopPropagation();
+    });
+
+    dialogClose.on('click', function () {
+        dialogBox.removeClass('dialog--active');
+    });
+    $(document).on("click", function (e) {
+        if ($(e.target).is(dialogBox) === false &&
+            $(e.target).is(dialogContent) === false &&
+            $(e.target).is(dialogAction) === false) {
+            dialogBox.removeClass("dialog--active");
+        }
+    });
+})();
+
+/** 과목 홈 링크 수정 **/
+
+// 관리자의 과목 링크 접근 리다이렉트
+if (location.href.replace(/\//gi, "").replace(/\?/gi, "") === "https:lmspub.hycu.ac.kraccounts1") {
+    $("table tr").find("td:first").find("a").each(function (index, item) {
+        $item = $(item);
+        $item.attr("href", $item.attr("href") + "/external_tools/30");
+    })    
+}
+
+// Top Frame의 과목 토글 박스
+// api token
+const api_token = 'jZgGPK6vSP5lxVnGZlLvN7wg02Ao6AhQpSgFCuuNkjwdrSaVtjF9Fa5UEjj5ptMz';
+
+// 과목 토글 박스 리스트 추가
+function getCourses(callback) {
+    return new Promise(function (resolve, reject) {
+        $.get(document.location.origin + '/api/v1/courses?access_token=' + api_token, function (response) {
+            resolve(response);
+        });
+    });
+}
+let options = '';
+if (!location.href.includes("courses")) {
+    options = '<option>과목선택</option>';
+}
+const $course_toggle = $("#course_toggle_top");
+getCourses().then(function (courses) {
+    options = options + courses.map((item, index) => '<option value="' + document.location.origin + '/courses/'
+        + item.id + '">' + item.name + '</option>');
+    if (!options) {
+        options = '<option>과목선택</option>';
+    }
+    $course_toggle.html(options);
+    $course_toggle.val(location.href);
+});
