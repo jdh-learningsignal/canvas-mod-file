@@ -116,7 +116,7 @@ if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kr") {
 (function () {
     $('.ic-app-nav-toggle-and-crumbs').append(
         '<div class="dialog">' +
-        '<span class="dialog__close">&#x2715;</span>' +
+        '<span class="dialog__close"></span>' +
         '<img src="https://lmspub.hycu.ac.kr/images/temp/Info.png" width="300px">' +
         '</div>');
 
@@ -147,7 +147,7 @@ if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kr") {
 (function () {
     $('.ic-app-nav-toggle-and-crumbs').append(
         '<div class="dialog">' +
-        '<span class="dialog__close">&#x2715;</span>' +
+        '<span class="dialog__close"></span>' +
         '<img src="https://lmspub.hycu.ac.kr/images/temp/Help.png" width="300px">' +
         '</div>');
 
