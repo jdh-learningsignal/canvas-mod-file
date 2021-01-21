@@ -112,10 +112,10 @@
             <select id="admin_toggle_top" class="page-toggle-top" style="width:200px;font-size:15px;height:40px;padding:0 13px;box-sizing:border-box;border:1px solid #c7cdd1;outline:none;border-radius:5px;background-color:#fff;margin-right:10px;">
               <option>한양사이버대학교</option>
             </select>
-            <select id=="semester_toggle_top" class="page-toggle-top">
+            <select id=="semester_toggle_top" class="page-toggle-top" style="width:200px;font-size:15px;height:40px;padding:0 13px;box-sizing:border-box;border:1px solid #c7cdd1;outline:none;border-radius:5px;background-color:#fff;margin-right:10px;">
               <option>2020년 1학기</option>
             </select>
-            <select id="course_toggle_top" class="page-toggle-top" onchange="if(this.value) {location.href=(this.value);}">
+            <select id="course_toggle_top" class="page-toggle-top" style="width:200px;font-size:15px;height:40px;padding:0 13px;box-sizing:border-box;border:1px solid #c7cdd1;outline:none;border-radius:5px;background-color:#fff;margin-right:10px;" onchange="if(this.value) {location.href=(this.value);}">
               <option><%= @context.name %></option>
             </select>
             <!-- 캔버스 직접 수정: 페이지 변환 토글 버튼 추가끝 -->
@@ -126,8 +126,8 @@
         <% if @show_left_side %></div><% end %>
           <!-- 캔버스 직접 수정: info & top 추가시작 -->
           <div class="btn-wrap-top">
-            <a href="#" id="info_top" class="support-top" style="line-height:26px;color:#6e7884;font-size:16px;font-weight:600;margin-left:13px; text-decoration:none;"><i class="icon-question"></i>info</a>
-            <a href="#" id="help_top" class="support-top"><i class="icon-question"></i>help</a>
+            <a href="#" id="info_top" class="support-top" style="line-height:26px;color:#6e7884;font-size:16px;font-weight:600;margin-left:13px; text-decoration:none;"><img src="https://lmspub.hycu.ac.kr/images/lti/info.png"></img>info</a>
+            <a href="#" id="help_top" class="support-top" style="line-height:26px;color:#6e7884;font-size:16px;font-weight:600;margin-left:13px; text-decoration:none;"><img src="https://lmspub.hycu.ac.kr/images/lti/help.png"></img>help</a>
           </div>
           <!-- 캔버스 직접 수정: info & top 추가 끝 -->
         <% if tutorials_enabled? %>
