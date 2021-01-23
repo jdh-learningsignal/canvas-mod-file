@@ -163,7 +163,7 @@ body.primary-nav-expanded .menu-item-icon-container .ic-avatar {width: 50px; hei
   }
 }
 .dialog.dialog--active {
-  left: 65.5%;
+  left: 30%;
   visibility: visible;
   opacity: 1;
   -webkit-transition: all 250ms ease-out;
