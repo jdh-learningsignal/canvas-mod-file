@@ -111,6 +111,9 @@ if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kr") {
     location.href = "https://lmspub.hycu.ac.kr/accounts/1/external_tools/42?launch_type=global_navigation";
 }
 
+// 글로벌 과목 셀렉트박스 현재 과목값으로 변경
+$("#course_toggle_top").val(location.href);
+
 /** info & help 추가 **/
 // info
 (function () {
@@ -184,29 +187,9 @@ if (location.href.replace(/\//gi, "").replace(/\?/gi, "") === "https:lmspub.hycu
     })    
 }
 
-// Top Frame의 과목 토글 박스
-// api token
-const api_token = 'jZgGPK6vSP5lxVnGZlLvN7wg02Ao6AhQpSgFCuuNkjwdrSaVtjF9Fa5UEjj5ptMz';
-
-// 과목 토글 박스 리스트 추가
-function getCourses(callback) {
-    return new Promise(function (resolve, reject) {
-        $.get(document.location.origin + '/api/v1/users/' + ENV.current_user.id + '/courses?access_token=' + api_token, function (response) {
-            resolve(response);
-        });
-    });
-}
-let options = '';
-if (!location.href.includes("courses")) {
-    options = '<option>과목선택</option>';
-}
-const $course_toggle = $("#course_toggle_top");
-getCourses().then(function (courses) {
-    options = options + courses.map((item, index) => '<option value="' + document.location.origin + '/courses/'
-        + item.id + '/external_tools/30' + '">' + item.name + '</option>');
-    if (!options) {
-        options = '<option>과목선택</option>';
-    }
-    $course_toggle.html(options);
-    $course_toggle.val(location.href);
+// LTI iframe resize
+$(window).load(function() {
+    $toolContent = $("#tool_content")
+    $toolContent.css("height", "200%");
+    $toolContent.css("width", "150%");
 });

@@ -117,7 +117,12 @@
               <option>2020년 1학기</option>
             </select>
             <select id="course_toggle_top" class="page-toggle-top" style="overflow:hidden; margin-bottom:0;border-bottom: 1px solid #c7cdd1; padding:15px 0;width: 200px;font-size:15px;height:40px;padding:0 13px; box-sizing: border-box;-webkit-appearance: none;-moz-appearance: none; appearance: none;background: url(/images/lti/i_arrow.png) no-repeat 95% 50%;border:1px solid #c7cdd1;outline: none;border-radius: 2px;margin-right:4px;" onchange="if(this.value) {location.href=(this.value);}">
-              <option><%= @context.name %></option>
+              <option value="https://lmspub.hycu.ac.kr/accounts/1/external_tools/42?launch_type=global_navigation" target="_parent">과목 선택</option>
+              <option value="https://lmspub.hycu.ac.kr/courses/1/external_tools/30" target="_parent">디자인사(01)</option>
+              <option value="https://lmspub.hycu.ac.kr/courses/2/external_tools/30" target="_parent">디자인과문화(01)</option>
+              <option value="https://lmspub.hycu.ac.kr/courses/3/external_tools/30" target="_parent">친환경건축기술(01)</option>
+              <option value="https://lmspub.hycu.ac.kr/courses/4/external_tools/30" target="_parent">아이디어발상과표현(01)</option>
+              <option value="https://lmspub.hycu.ac.kr/courses/5/external_tools/30" target="_parent">풍수지리와생활공간 01분반</option>
             </select>
             <!-- 캔버스 직접 수정: 페이지 변환 토글 버튼 추가끝 -->
         <% end %>
