@@ -52,7 +52,7 @@
     $('.ic-app-nav-toggle-and-crumbs').append(
         '<div class="dialog">' +
         '<span class="dialog__close">&#x2715;</span>' +
-        '<img src="https://www3.hycu.ac.kr/canvas/baram/baram_1.png" width="300px">' +
+        '<img src="https://www3.hycu.ac.kr/canvas/baram/baram_1.png">' +
         '</div>');
 
     // info & help

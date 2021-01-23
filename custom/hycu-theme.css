@@ -143,10 +143,10 @@ body.primary-nav-expanded .menu-item-icon-container .ic-avatar {width: 50px; hei
 }
 .dialog {
   background: #ffffff;
-  width: 300px;
+  width: 350px;
   height: 800px;
   position: absolute;
-  left: calc(100% - 35%);
+  left: calc(100% - 30%);
   top: 0;
   padding: 30px;
   visibility: hidden;
@@ -163,7 +163,7 @@ body.primary-nav-expanded .menu-item-icon-container .ic-avatar {width: 50px; hei
   }
 }
 .dialog.dialog--active {
-  left: 60%;
+  left: 65.5%;
   visibility: visible;
   opacity: 1;
   -webkit-transition: all 250ms ease-out;

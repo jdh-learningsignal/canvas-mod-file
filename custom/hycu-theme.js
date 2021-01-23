@@ -117,10 +117,10 @@ $("#course_toggle_top").val(location.href);
 /** info & help 추가 **/
 // info
 (function () {
-    $('.ic-app-nav-toggle-and-crumbs').append(
+    $('#content-wrapper').append(
         '<div class="dialog">' +
         '<span class="dialog__close"></span>' +
-        '<img src="https://lmspub.hycu.ac.kr/images/temp/Info.png" width="300px">' +
+        '<img src="https://lmspub.hycu.ac.kr/images/temp/Info.png">' +
         '</div>');
 
     const dialogBox = $('.dialog'),
@@ -148,26 +148,20 @@ $("#course_toggle_top").val(location.href);
 
 // help
 (function () {
-    $('.ic-app-nav-toggle-and-crumbs').append(
+    $('#content-wrapper').append(
         '<div class="dialog">' +
         '<span class="dialog__close"></span>' +
-        '<img src="https://lmspub.hycu.ac.kr/images/temp/Help.png" width="300px">' +
+        '<img src="https://lmspub.hycu.ac.kr/images/temp/Help.png">' +
         '</div>');
 
     const dialogBox = $('.dialog'),
-        helpTrigger = $('#help_top'),
-        dialogClose = $('.dialog__close'),
-        dialogContent = $('.dialog__content'),
-        dialogAction = $('.dialog__action');
+        helpTrigger = $('#help_top');
 
-        helpTrigger.on('click', function (e) {
+    helpTrigger.on('click', function (e) {
         dialogBox.toggleClass('dialog--active');
         e.stopPropagation();
     });
 
-    dialogClose.on('click', function () {
-        dialogBox.removeClass('dialog--active');
-    });
     $(document).on("click", function (e) {
         if ($(e.target).is(dialogBox) === false &&
             $(e.target).is(dialogContent) === false &&
