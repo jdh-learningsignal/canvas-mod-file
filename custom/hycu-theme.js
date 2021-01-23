@@ -176,7 +176,7 @@ if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kr") {
 
 /** 과목 홈 링크 수정 **/
 
-// 관리자의 과목 링크 접근 리다이렉트
+// 관리자의 과목 링크 접근 URL 변경
 if (location.href.replace(/\//gi, "").replace(/\?/gi, "") === "https:lmspub.hycu.ac.kraccounts1") {
     $("table tr").find("td:first").find("a").each(function (index, item) {
         $item = $(item);
@@ -191,7 +191,7 @@ const api_token = 'jZgGPK6vSP5lxVnGZlLvN7wg02Ao6AhQpSgFCuuNkjwdrSaVtjF9Fa5UEjj5p
 // 과목 토글 박스 리스트 추가
 function getCourses(callback) {
     return new Promise(function (resolve, reject) {
-        $.get(document.location.origin + '/api/v1/courses?access_token=' + api_token, function (response) {
+        $.get(document.location.origin + '/api/v1/users/' + ENV.current_user.id + '/courses?access_token=' + api_token, function (response) {
             resolve(response);
         });
     });
@@ -203,7 +203,7 @@ if (!location.href.includes("courses")) {
 const $course_toggle = $("#course_toggle_top");
 getCourses().then(function (courses) {
     options = options + courses.map((item, index) => '<option value="' + document.location.origin + '/courses/'
-        + item.id + '">' + item.name + '</option>');
+        + item.id + '/external_tools/30' + '">' + item.name + '</option>');
     if (!options) {
         options = '<option>과목선택</option>';
     }

@@ -109,13 +109,14 @@
             <i class="icon-hamburger" aria-hidden="true"></i>
           </button>
           <div class="ic-app-crumbs">
-            <select id="admin_toggle_top" class="page-toggle-top" style="width:200px;font-size:15px;height:40px;padding:0 13px;box-sizing:border-box;border:1px solid #c7cdd1;outline:none;border-radius:5px;background-color:#fff;margin-right:10px;">
+
+            <select id="admin_toggle_top" class="page-toggle-top" style="background-color: #6e7884; overflow:hidden; margin-bottom:0;border-bottom: 1px solid #c7cdd1; padding:15px 0;width: 200px;font-size:15px;height:40px;padding:0 13px; box-sizing: border-box;-webkit-appearance: none;-moz-appearance: none; appearance: none;background: url(/images/lti/iw_arrow.png) no-repeat 95% 50%;border:1px solid #c7cdd1;outline: none;border-radius: 2px;margin-right:4px;background-color:#6e7884;color: #fff;">
               <option>한양사이버대학교</option>
             </select>
-            <select id=="semester_toggle_top" class="page-toggle-top" style="width:200px;font-size:15px;height:40px;padding:0 13px;box-sizing:border-box;border:1px solid #c7cdd1;outline:none;border-radius:5px;background-color:#fff;margin-right:10px;">
+            <select id=="semester_toggle_top" class="page-toggle-top" style="overflow:hidden; margin-bottom:0;border-bottom: 1px solid #c7cdd1; padding:15px 0;width: 200px;font-size:15px;height:40px;padding:0 13px; box-sizing: border-box;-webkit-appearance: none;-moz-appearance: none; appearance: none;background: url(/images/lti/i_arrow.png) no-repeat 95% 50%;border:1px solid #c7cdd1;outline: none;border-radius: 2px;margin-right:4px;">
               <option>2020년 1학기</option>
             </select>
-            <select id="course_toggle_top" class="page-toggle-top" style="width:200px;font-size:15px;height:40px;padding:0 13px;box-sizing:border-box;border:1px solid #c7cdd1;outline:none;border-radius:5px;background-color:#fff;margin-right:10px;" onchange="if(this.value) {location.href=(this.value);}">
+            <select id="course_toggle_top" class="page-toggle-top" style="overflow:hidden; margin-bottom:0;border-bottom: 1px solid #c7cdd1; padding:15px 0;width: 200px;font-size:15px;height:40px;padding:0 13px; box-sizing: border-box;-webkit-appearance: none;-moz-appearance: none; appearance: none;background: url(/images/lti/i_arrow.png) no-repeat 95% 50%;border:1px solid #c7cdd1;outline: none;border-radius: 2px;margin-right:4px;" onchange="if(this.value) {location.href=(this.value);}">
               <option><%= @context.name %></option>
             </select>
             <!-- 캔버스 직접 수정: 페이지 변환 토글 버튼 추가끝 -->
@@ -126,8 +127,8 @@
         <% if @show_left_side %></div><% end %>
           <!-- 캔버스 직접 수정: info & top 추가시작 -->
           <div class="btn-wrap-top">
-            <a href="#" id="info_top" class="support-top" style="line-height:26px;color:#6e7884;font-size:16px;font-weight:600;margin-left:13px; text-decoration:none;"><img style="margin-right:5px" src="https://lmspub.hycu.ac.kr/images/lti/info.png"></img>info</a>
-            <a href="#" id="help_top" class="support-top" style="line-height:26px;color:#6e7884;font-size:16px;font-weight:600;margin-left:13px; text-decoration:none;"><img style="margin-right:5px" src="https://lmspub.hycu.ac.kr/images/lti/help.png"></img>help</a>
+            <a href="#" id="info_top" class="support-top" style="float: left;line-height: 26px;color: #6e7884;font-size: 16px;font-weight: 600;margin-left: 13px;text-decoration: none;"><img style="margin-right:5px" src="/images/lti/info.png"></img>Info</a>
+            <a href="#" id="help_top" class="support-top" style="float: left;line-height: 26px;color: #6e7884;font-size: 16px;font-weight: 600;margin-left: 13px;text-decoration: none;"><img style="margin-right:5px" src="/images/lti/help.png"></img>help</a>
           </div>
           <!-- 캔버스 직접 수정: info & top 추가 끝 -->
         <% if tutorials_enabled? %>
