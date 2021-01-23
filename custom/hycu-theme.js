@@ -111,6 +111,12 @@ if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kr") {
     location.href = "https://lmspub.hycu.ac.kr/accounts/1/external_tools/42?launch_type=global_navigation";
 }
 
+// dimmed 레이어 추가
+$('body').append('<div class="dimmed"id="dimmed-top"style="display:none;position:fixed;top:0px;left:0px;width:100%;height:72px;z-index:100;opacity:0.5;background-color:rgb(0,0,0);"></div>');
+// $('body').append('<div class="dimmed"id="dimmed-left"style="position:fixed;top:72px;left:0px;width:277px;height:100%;z-index:100;opacity:0.5;background-color:rgb(0,0,0);"></div>');
+$('body').append('<div class="dimmed"id="dimmed-left"style="display:none;position:fixed;top:72px;left:0px;width:300px;height:100%;z-index:100;opacity:0.5;background-color:rgb(0,0,0);"></div>');
+$('body').append('<div class="dimmed"id="dimmed-right"style="display:none;position:fixed;top:72px;left:1426px;width:1000px;height:100%;z-index:100;opacity:0.5;background-color:rgb(0,0,0);"></div>');
+
 // 글로벌 과목 셀렉트박스 현재 과목값으로 변경
 $("#course_toggle_top").val(location.href);
 
@@ -181,9 +187,9 @@ if (location.href.replace(/\//gi, "").replace(/\?/gi, "") === "https:lmspub.hycu
     })    
 }
 
-// LTI iframe resize
 $(window).load(function() {
+    // LTI iframe resize
     $toolContent = $("#tool_content")
     $toolContent.css("height", "200%");
     $toolContent.css("width", "150%");
-});
+
