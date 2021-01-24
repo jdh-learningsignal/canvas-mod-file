@@ -187,9 +187,27 @@ if (location.href.replace(/\//gi, "").replace(/\?/gi, "") === "https:lmspub.hycu
     })    
 }
 
+
+function showDimmed() {
+    $('.dimmed').show();
+}
+
+function hideDimmed() {
+    $('.dimmed').hide();
+}
+
 $(window).load(function() {
     // LTI iframe resize
     $toolContent = $("#tool_content")
     $toolContent.css("height", "200%");
     $toolContent.css("width", "150%");
+    
+    window.addEventListener('message', (e) => {
+        // 전달 된 데이터 
+        console.log(e.data.functionName);
+      
+        // 부모창의 함수 실행
+        window[e.data.functionName](); 
+    });
+});
 
