@@ -101,93 +101,114 @@ Set courseHome = Nothing;
 //////////////////////////////////////////////////////////////////////////
 /////////////////////////// 라이너스 추가 ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
-/** 내강의실 클릭 시 아이콘 선택 이미지로 변경 **/
-if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kraccounts1external_tools42?launch_type=global_navigation") {
+
+$(window).load(() => {
+  // Canvas resize
+  if (!(location.href.replace(/\//gi, "").includes("external_tools29") || location.href.replace(/\//gi, "").includes("external_tools40"))) {
+    $("#tool_content").css("height", "207%");
+  }
+  $("#left-side").height("6645px");
+
+  // dimmed 레이어 추가
+  $('body').append('<div class="dimmed"id="dimmed-top"style="position:absolute; top: 0px; left: 0px; width: 500%; height: 72px; z-index: 100; opacity: 0.5; background-color: rgb(0, 0, 0); display: none;"></div>');
+  $('body').append('<div class="dimmed"id="dimmed-bottom"style="position:absolute;top:2673.5px;left:300px;width:1125.5px;height:2000px;z-index:100;opacity:0.5;background-color:rgb(0,0,0); display: none;"></div>');
+  $('body').append('<div class="dimmed"id="dimmed-left"style="position:absolute; top: 72px; left: 0px; width: 300px; height: 500%; z-index: 100; opacity: 0.5; background-color: rgb(0, 0, 0); display: none;"></div>');
+  $('body').append('<div class="dimmed"id="dimmed-right"style="position:absolute; top: 72px; left: 1426px; width: 3000px; height: 500%; z-index: 100; opacity: 0.5; background-color: rgb(0, 0, 0); display: none;"></div>');
+
+  /** 내강의실 클릭 시 아이콘 선택 이미지로 변경 **/
+  if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kraccounts1external_tools42?launch_type=global_navigation") {
     $("#context_external_tool_42_menu_item a img").attr("src", "https://lmspub.hycu.ac.kr/images/svg-icons/svg_icon_hycu_mylecture_a.png");
-}
+  }
 
-/** 대시보드로 이동 시 내강의실로 리다이렉트 **/
-if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kr") {
+  /** 대시보드로 이동 시 내강의실로 리다이렉트 **/
+  if (location.href.replace(/\//gi, "") === "https:lmspub.hycu.ac.kr") {
     location.href = "https://lmspub.hycu.ac.kr/accounts/1/external_tools/42?launch_type=global_navigation";
-}
+  }
 
-// dimmed 레이어 추가
-$('body').append('<div class="dimmed"id="dimmed-top"style="display:none;position:fixed;top:0px;left:0px;width:100%;height:72px;z-index:100;opacity:0.5;background-color:rgb(0,0,0);"></div>');
-// $('body').append('<div class="dimmed"id="dimmed-left"style="position:fixed;top:72px;left:0px;width:277px;height:100%;z-index:100;opacity:0.5;background-color:rgb(0,0,0);"></div>');
-$('body').append('<div class="dimmed"id="dimmed-left"style="display:none;position:fixed;top:72px;left:0px;width:300px;height:100%;z-index:100;opacity:0.5;background-color:rgb(0,0,0);"></div>');
-$('body').append('<div class="dimmed"id="dimmed-right"style="display:none;position:fixed;top:72px;left:1426px;width:1000px;height:100%;z-index:100;opacity:0.5;background-color:rgb(0,0,0);"></div>');
+  /** 과목 홈 링크 수정 **/
+  if (location.href.replace(/\//gi, "").replace(/\?/gi, "") == "https:lmspub.hycu.ac.kraccounts1") {
+    $("table tr").find("td:first").find("a").each((index, item) => {
+        $(item).attr("href", $(item).attr("href") + "/external_tools/30");
+    });
+  }
+
+  /** dimmed 처리 이벤트 리스너 */
+  window.addEventListener('message', (e) => {
+    console.log(e);
+    console.log(e.data);
+    if (e.data.functionName == 'showDimmed') {
+      setTimeout(function() {
+        window[e.data.functionName]();
+      }, 200);
+    } else {
+      window[e.data.functionName]();
+    }
+  });
+});
 
 // 글로벌 과목 셀렉트박스 현재 과목값으로 변경
-$("#course_toggle_top").val(location.href);
+if (location.href.replace(/\//gi, "").replace(/\?/gi, "").includes("https:lmspub.hycu.ac.krcourses")) {
+  $("#course_toggle_top").val("https://lmspub.hycu.ac.kr/courses/" + location.href.split("/")[4] + "/external_tools/30");
+}
 
 /** info & help 추가 **/
-// info
 (function () {
-    $('#content-wrapper').append(
-        '<div class="dialog">' +
-        '<span class="dialog__close"></span>' +
+    $('.ic-app-crumbs').append(
+        '<div id="info_dialog" class="dialog" style="float:left; background-color:#fff;width: 320px;">' +
+        '<span id="info_close" class="dialog__close"></span>' +
         '<img src="https://lmspub.hycu.ac.kr/images/temp/Info.png">' +
         '</div>');
+    $('.ic-app-crumbs').append(
+        '<div id="help_dialog" class="dialog" style="float:left; background-color:#fff;width: 320px;">' +
+        '<span id="help_close" class="dialog__close"></span>' +
+        '<img src="https://lmspub.hycu.ac.kr/images/temp/Help.png" >' +
+        '</div>');
 
-    const dialogBox = $('.dialog'),
+    const infoDialogBox = $('#info_dialog'),
         infoTrigger = $('#info_top'),
-        dialogClose = $('.dialog__close'),
+        infoDialogClose = $('#info_close'),
+        helpDialogBox = $('#help_dialog'),
+        helpTrigger = $('#help_top'),
+        helpDialogClose = $('#help_close'),
         dialogContent = $('.dialog__content'),
         dialogAction = $('.dialog__action');
 
-    infoTrigger.on('click', function (e) {
-        dialogBox.toggleClass('dialog--active');
+    infoTrigger.on('click', (e) => {
+        infoDialogBox.toggleClass('dialog--active');
+        helpDialogBox.removeClass('dialog--active');
+        e.stopPropagation();
+    });
+    infoDialogClose.on('click', () => {
+        infoDialogBox.removeClass('dialog--active');
         e.stopPropagation();
     });
 
-    dialogClose.on('click', function () {
-        dialogBox.removeClass('dialog--active');
+    helpTrigger.on('click', (e) => {
+      helpDialogBox.toggleClass('dialog--active');
+      infoDialogBox.removeClass('dialog--active');
+      e.stopPropagation();
     });
-    $(document).on("click", function (e) {
-        if ($(e.target).is(dialogBox) === false &&
+    helpDialogClose.on('click', () => {
+        helpDialogBox.removeClass('dialog--active');
+        e.stopPropagation();
+    });
+
+    $(document).on("click", (e) => {
+        if ($(e.target).is(infoDialogBox) === false &&
             $(e.target).is(dialogContent) === false &&
             $(e.target).is(dialogAction) === false) {
-            dialogBox.removeClass("dialog--active");
+            infoDialogBox.removeClass("dialog--active");
+        }
+
+        if ($(e.target).is(helpDialogBox) === false &&
+            $(e.target).is(dialogContent) === false &&
+            $(e.target).is(dialogAction) === false) {
+            helpDialogBox.removeClass("dialog--active");
         }
     });
 })();
 
-// help
-(function () {
-    $('#content-wrapper').append(
-        '<div class="dialog">' +
-        '<span class="dialog__close"></span>' +
-        '<img src="https://lmspub.hycu.ac.kr/images/temp/Help.png">' +
-        '</div>');
-
-    const dialogBox = $('.dialog'),
-        helpTrigger = $('#help_top');
-
-    helpTrigger.on('click', function (e) {
-        dialogBox.toggleClass('dialog--active');
-        e.stopPropagation();
-    });
-
-    $(document).on("click", function (e) {
-        if ($(e.target).is(dialogBox) === false &&
-            $(e.target).is(dialogContent) === false &&
-            $(e.target).is(dialogAction) === false) {
-            dialogBox.removeClass("dialog--active");
-        }
-    });
-})();
-
-/** 과목 홈 링크 수정 **/
-
-// 관리자의 과목 링크 접근 URL 변경
-if (location.href.replace(/\//gi, "").replace(/\?/gi, "") === "https:lmspub.hycu.ac.kraccounts1") {
-    $("table tr").find("td:first").find("a").each(function (index, item) {
-        $item = $(item);
-        $item.attr("href", $item.attr("href") + "/external_tools/30");
-    })    
-}
-
-
+/** dimmed 처리 함수 **/
 function showDimmed() {
     $('.dimmed').show();
 }
@@ -195,19 +216,3 @@ function showDimmed() {
 function hideDimmed() {
     $('.dimmed').hide();
 }
-
-$(window).load(function() {
-    // LTI iframe resize
-    $toolContent = $("#tool_content")
-    $toolContent.css("height", "200%");
-    $toolContent.css("width", "150%");
-    
-    window.addEventListener('message', (e) => {
-        // 전달 된 데이터 
-        console.log(e.data.functionName);
-      
-        // 부모창의 함수 실행
-        window[e.data.functionName](); 
-    });
-});
-
